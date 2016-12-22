@@ -30,7 +30,10 @@
 				<a type="button" id="loginButton" class="nav_btn">
 	    		<i class="fa fa-sign-in" id="font-awesome"></i> Admin Login</a>  
     		</span>
-    	<a href="register.php" class="nav_btn" style="text-decoration:none;"><i class="fa fa-file" id="font-awesome"></i> Register</a>
+    		<a href="register.php" class="nav_btn" style="text-decoration:none;"><i class="fa fa-file" id="font-awesome"></i> Register</a>
+    		<a href="news.php" class="nav_btn" style="text-decoration: none;" target="_blank"><i class="fa fa-newspaper-o" id="font-awesome"></i> News</a>
+    		<a href="" class="nav_btn" style="text-decoration: none;"><i class="fa fa-comments" id="font-awesome"></i> Chat Portal</a>
+    		<a href="embed.html" class="nav_btn" style="text-decoration: none;"><i class="fa fa-map-marker" id="font-awesome"></i> Places</a>
 	</nav>
 
 	<span id="transform">
@@ -69,7 +72,7 @@
 		                <h4 class="modal-title">Login </h4>
 		            </div>
 		            <div class="modal-body">
-					 <form method="post" action="emp_login.php" class="form-vertical">
+					 <form method="post" action="keypress.php" class="form-vertical">
 							<div class="form-group">
 								<label class="control-label">Id:</label>
 								<input type="email" class="form-control input-sm" name="Id" placeholder="Id">

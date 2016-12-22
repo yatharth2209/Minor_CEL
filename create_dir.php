@@ -67,7 +67,7 @@ function createDirectory($next)
 				        url: 'session_set.php',
 				        data: { val: y },
 				        success: function(response) {
-				        	$('#result').html(response);
+				            $('#result').html(response);
 				            $('#result').css({'margin-top':'-100px'});
 				        }
 				    });		

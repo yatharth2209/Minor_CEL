@@ -90,7 +90,8 @@ function print_table()
 <?php 
 if ($GLOBALS['check']==1){
     echo '<a type="button" class="btn btn-primary" href="readdir.php">View Files</a>';
-    echo '<a type="button" class="btn btn-danger" href="log.php">View Log</a>';       
+    echo '<a type="button" class="btn btn-danger" href="log.php">View Log</a>';
+    echo '<a type="button" class="btn btn-warning" href="upload.php">Upload Files</a>';       
 }
 ?>
 </body>

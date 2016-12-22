@@ -31,13 +31,12 @@ echo '<table class="table table-striped">
                     <th>Name</th>
                     <th>Division</th>
                     <th>Approve</th>
-                    <th>Verified</th>
+                    <th>Versified</th>
                 </tr>';
 
 $sql = "SELECT * FROM Register WHERE Approved=0";
 $result = $conn->query($sql);
 
-echo "djdjd";
 
 if ($result->num_rows > 0) 
 {

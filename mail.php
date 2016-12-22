@@ -1,35 +1,9 @@
-<!--  <?php
-
-if(isset($_POST["submit1"])) 
-{
-    echo "hello";
-    $to = $_POST["email"];
-    $subject = "Verification mail for logging";
-
-    $message = "Click on the link below for verifying mail /n ";
-
-    $header = "This mail has been sent by CEL portal admin";
-
-    $query = mail("$to,$subject,$message,$header");
-
-    if($query == TRUE)
-    {
-        echo "Email has been sent to your specified mail";
-    }
-    else 
-    {
-        echo "System Failure. Try Again Later";
-    }
-
-}
-
-?>
--->
-
 <?php
 
 include 'connection.php';
-
+session_start();
+$otp=mt_rand(1000,9999);
+$_SESSION['otp']=$otp;
 function input($data) 
 {
   $data = trim($data);
@@ -101,22 +75,22 @@ if(isset($_POST["submit1"]))
     $div = input($_POST["div"]);
   }
 
-  
-if ($lnameErr == "" AND $fnameErr == "" AND $emailErr == "" AND $passErr == "" AND $divErr == "")
-{
-
+  $_SESSION['user_id']=$_POST['email'];
+  echo $_SESSION['user_id']."<br>";
+  echo $fname.$lname.$email.$pass.$div;
+  echo md5($pass);
   $pass=md5($pass);
   $sql = "INSERT into Register (Fname,Lname,Id,Password,Division)
   VALUES ('$fname','$lname','$email','$pass','$div' )";
 
   if (mysqli_query($conn, $sql)) {
       echo "New record created successfully";
-  } else 
+  } 
+  else 
   {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
    mysqli_close($conn);
-}
 }
 ?>
 
@@ -135,28 +109,29 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
-$mail->Username = "prashantsingh1896@gmail.com";
-$mail->Password = "";
+$mail->Username = "ysinghal2209@gmail.com";
+$mail->Password = "benditlikebeckhamshootitlikecr7";
  
-$mail->setFrom = '1prashant1singh1@gmail.com';
-$mail->FromName = 'Prashant Singh';
-$mail->addAddress('prashantsingh1896@gmail.com', 'Prash');
+$mail->setFrom = 'ysinghal2209@gmail.com';
+$mail->FromName = 'Yatharth Singhal';
+$mail->addAddress('ysinghal2209@gmail.com', 'Yatharth');
  
-$mail->addReplyTo('prashantsingh1896@gmail.com', 'Prash');
+$mail->addReplyTo('ysinghal2209@gmail.com', 'Yatharth');
  
 $mail->WordWrap = 50;
 $mail->isHTML(true);
  
 $mail->Subject = 'Password Verification';
-$mail->Body    = 'Click on the link 
-<a href = "https://www.google.com/settings/security/lesssecureapps"> Here </a>';
+$mail->Body    = 'OTP is '.$otp;
  
 if(!$mail->send()) {
    echo 'Message could not be sent.';
    echo 'Mailer Error: ' . $mail->ErrorInfo;
 }
- else{
-echo 'Message has been sent';
+ else
+ {
+  echo 'Message has been sent';
+  echo '<script>window.location.assign("otp.php");</script>';
+
 }
-echo "<script>window.location.assign('home.php');</script>"
 ?>
